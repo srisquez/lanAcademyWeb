@@ -1,0 +1,102 @@
+<div class="container">
+
+ <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#">Home</a></li>
+                   <li class="active">Feedback</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Feedback</h3>
+               <hr>
+            </div>
+ </div>
+
+
+<div class="row row-content">
+           <div class="col-xs-12">
+              <h3>Feedback Form</h3> 
+           </div>
+            <div class="col-xs-12 col-sm-9">
+
+                <form class="form-horizontal" role="form" name="feedbackForm" ng-submit="sendfeedback()" novalidate>
+
+                  <div class="form-group" ng-class="{ 'has-error' : feedbackForm.feedbackDes.$error.required && !feedbackForm.feedbackDes.$pristine }">
+                        <label for="feedbackDes" class="col-sm-3 control-label">Description</label>
+                        <div class="col-sm-5">
+                        <textarea   class="form-control"  id="feedbackDes"  name="feedbackDes" 
+                        ng-model="feedback.feedbackDes" required>  </textarea>
+                          <span ng-show="feedbackForm.feedbackDes.$error.required && !feedbackForm.feedbackDes.$pristine" class="help-block">Your Description is required.</span>
+                      </div>
+                      <div class="col-sm-4">
+                         </div>
+                    </div>
+
+                   <div class="form-group"  ng-class="{ 'has-error' : invalidSudentSelection }">
+                      <label  class="col-sm-3 control-label">Student</label>
+                       <div class="col-sm-5">
+                            <select class="form-control"
+                               ng-model="studentID" ng-options="student._id as student.username for student in studentsList">
+                                <option value="">Student?</option>
+                            </select>
+                        <span ng-show="invalidSudentSelection" class="help-block">Select an option.</span>
+                        </div>
+                         <div class="col-sm-4">
+                         </div>
+                  </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-sm-10">
+                            <button type="submit" class="btn btn-primary" ng-disabled="feedbackForm.$invalid">Send Feedback</button>
+                        </div>
+                    </div>
+
+                </form>
+              <div><p style="padding:20px;"></p></div>
+
+         </div>
+  </div>
+
+
+ <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h3>Feedbacks List</h3>
+                <div>
+                <P>You could remove any feedback when you select the feedback.</P>
+                </div>
+                <div><p style="padding:5px;"></p></div>
+                 <button style="background-color:#00ac8c;font-weight: bold" ng-disabled="!showDeleteEdit" ng-click="removeLesson()" class="btn btn-xs" type="button" >
+                    {{'Remove Feedback'}}
+                </button>
+                <!--<button style="background-color:#00ac8c;font-weight: bold" ng-disabled="!showDeleteEdit"  class="btn btn-xs"
+                    type="button" ui-sref="app.feedback.editFeedback">
+                     {{'Edit Feedback'}}
+                </button>-->
+              <div><p style="padding:10px;"></p></div>
+                <div class="table-responsive">
+                <table class="table ">
+    
+  <thead>
+    <tr>
+      <th>Posted Date</th>
+      <th>Description</th>
+      <th>Student</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="feedback in listFeedbacks" ng-click="selectRow($index)" ng-class="{'highlight': $index == selectedRow  }" >
+      <td> {{feedback.postedDate | date: 'yyyy-MM-dd'}}</td>
+      <td> {{feedback.feedbackDes}}</td>
+      <!--<td>{{lesson.teacher.firstname + ' ' + lesson.teacher.lastname}} </td>-->
+      <td>{{feedback.student}}</td>
+    </tr>
+  </tbody>
+</table>
+   </div>
+            </div>
+   </div>
+
+
+
+   </div>

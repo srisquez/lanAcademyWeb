@@ -1,0 +1,97 @@
+<div class="container">
+
+ <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#">Home</a></li>
+                   <li><a  ui-sref="app.reviewStu">Lesson Management - Review Lesson</a></li>
+                   <li class="active">Edit Lesson</li>
+               </ul>
+            </div>
+
+
+            <div class="col-xs-12">
+               <h3>Edit Lesson</h3>
+               <hr>
+            </div>
+
+                   <div class="col-xs-12 col-sm-9">
+
+               <form class="form-horizontal" role="form" name="requestForm" ng-submit="editLesson()" novalidate>
+
+                 <div class="form-group" ng-class="{ 'has-error' : requestForm.date.$error.required && !requestForm.date.$pristine }">
+                        <label for="date" class="col-sm-3 control-label">Date</label>
+                        <div class="col-sm-5">
+                        <input  type="date" class="form-control" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" id="date"  name="date"  placeholder="YYYY-MM-DD"
+                        ng-model="itemLesson.date" required>
+                          <span ng-show="requestForm.date.$error.required && !requestForm.date.$pristine" class="help-block">Your Date is required.</span>
+                      </div>
+                      <div class="col-sm-4">
+                         </div>
+                    </div>
+
+                  <div class="form-group"  ng-class="{ 'has-error' : invalidLessonSelection }">
+                      <label class="col-sm-3 control-label">Type of Lesson</label>
+                       <div class="col-sm-5">
+                            <select class="form-control"
+                               ng-model="itemLesson.lessonType"
+                               ng-options="lesson.value as lesson.label for lesson in lessonTypes">
+                                <option value="">Type of Lesson?</option>
+                            </select>
+                        <span ng-show="invalidLessonSelection" class="help-block">Select an option.</span>
+                        </div>
+                         <div class="col-sm-4">
+                         </div>
+                  </div>
+
+                    <div class="form-group"  ng-class="{ 'has-error' : invalidlessonStartSelection }">
+                      <label  class="col-sm-3 control-label">Lesson Start Time</label>
+                       <div class="col-sm-5">
+                            <select class="form-control"
+                               ng-model="itemLesson.startHour"
+                               ng-options="lessonStart.value as lessonStart.label for lessonStart in lessonStartTime">
+                                <option value="">Lesson Start Time?</option>
+                            </select>
+                        <span ng-show="invalidlessonStartSelection" class="help-block">Select an option.</span>
+                        </div>
+                         <div class="col-sm-4">
+                         </div>
+                  </div>
+
+                
+
+                          <div class="form-group"  ng-class="{ 'has-error' : invalidTeacherSelection }">
+                      <label   class="col-sm-3 control-label">Teacher</label>
+                       <div class="col-sm-5">
+                            <select class="form-control"
+                               ng-model="itemLesson.teacher._id" ng-options="teacher._id as teacher.firstname for teacher in teachers">
+                                <option value="">Teacher?</option>
+                            </select>
+                        <span ng-show="invalidTeacherSelection" class="help-block">Select an option.</span>
+                        </div>
+                         <div class="col-sm-4">
+                         </div>
+                  </div>
+
+                  <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-10">
+                            <div><p style="padding:10px;"></p></div>
+                            <p style="padding-left: 40px;">
+                          
+                            <button style="background-color:#00ac8c;font-weight: bold;"   class="btn btn-xs" type="button" ui-sref="app.reviewStu">
+                            {{'Back to Review Lesson'}}
+                            </button>
+                            <button type="submit" style="background-color:#00ac8c;font-weight: bold" class="btn btn-xs"  ng-disabled="requestForm.$invalid">Edit Lesson</button>
+                        </div>
+                    </div>
+
+                   <div><p style="padding:10px;"></p></div>
+                    <div><span ng-show="duplicate" class="help-block">you already have requested this lesson.</span> </div>
+
+              </form>
+              <div><p style="padding:20px;"></p></div>
+
+         </div>
+ </div>
+
+  </div>

@@ -1,0 +1,51 @@
+<div class="container">
+
+ <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#">Home</a></li>
+                   <li class="active">Review Feedbacks</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Review Feedbacks</h3>
+               <hr>
+            </div>
+ </div>
+
+  <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h3>Feedbacks</h3>
+                <div class="table-responsive">
+                <table class="table table-striped">
+                  <tr>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Posted by
+                        </th>
+                    </tr>
+                    <tr ng-repeat="feedback in feedbacks"    >
+
+                        <td>
+                            {{feedback.postedDate  | date: 'MM-dd-yyyy'}}
+                        </td>
+                        <td>
+                             {{feedback.feedbackDes}}
+                        </td>
+                        <td>
+                             {{feedback.postedBy.username}} 
+                        </td>
+                    </tr>
+
+                </table>
+                </div>
+            </div>
+         </div>
+
+
+  </div>

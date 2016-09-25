@@ -1,0 +1,68 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Resources</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Resources</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+           
+            <div class="col-xs-12" >
+               
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                    <a ng-click="select(1)"
+                     aria-controls="Speaking"
+                    role="tab">Speaking</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                    <a ng-click="select(2)"
+                    aria-controls="Grammar"
+                     role="tab">Grammar</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(3)}">
+                    <a ng-click="select(3)"
+                     aria-controls="Reading"
+                     role="tab">Reading</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(4)}">
+                    <a  ng-click="select(4)"
+                     aria-controls="Vocabulary"
+                     role="tab">Vocabulary</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(5)}">
+                    <a  ng-click="select(5)"
+                     aria-controls="Listening"
+                     role="tab">Listening</a></li>
+                     <li role="presentation"
+                    ng-class="{active:isSelected(6)}">
+                    <a  ng-click="select(6)"
+                     aria-controls="Writing"
+                     role="tab">Writing</a></li>
+                </ul>
+             
+                <div class="tab-content">
+               <ul class="media-list tab-pane fade in active">
+                <li class="media" ng-repeat="resource in resources | filter:filtText">
+                    <div class="media-body">
+                        <h3 class="media-heading"><a  href="{{resource.url}}" target="_blank">{{resource.name}}</a> 
+                        <span class="label label-danger label-xs">{{resource.label}}</span>
+                       </h3>
+                        <p>{{resource.description}}</p>
+                    </div>
+                </li>
+            </ul>
+
+            </div>
+            </div>
+        </div>
+
+    </div>

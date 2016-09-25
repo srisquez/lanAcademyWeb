@@ -1,0 +1,70 @@
+
+    
+
+   [ {
+      "id": 0,
+      "name": "Oral English Activities",
+      "image": "images/uthapizza.png",
+      "category": "Speaking",
+      "label": "New",
+      "url": "http://waze.net/oea/",
+      "description": "Communicative speaking activities for the ESL classroom, designed by a teacher ... thematic focus, and could be integrated into almost any oral English lesson."
+    },
+    {
+      "id": 1,
+      "name": "English Resource Grammar and Lexicon",
+      "image": "images/zucchipakoda.png",
+      "category": "Grammar",
+      "label": "",
+       "url": "http://www.delph-in.net/erg/",
+      "description": "The LinGO English Resource Grammar (ERG) is a broad-coverage, linguistically precise HPSG-based grammar of English."
+    },
+    {
+      "id": 2,
+      "name": "Speaking Activities - Oral English assessments and ESL speaking",
+      "image": "images/vadonut.png",
+      "category": "Speaking",
+      "label": "",
+        "url": "http://www.spokenskills.com/student-activities.cfm",
+      "description": "Speaking English Activities. Resources for ESL teachers, language professionals and students"
+    },
+    {
+      "id": 3,
+      "name": "Reading Comprehension Resources for EFL and ESL Learners",
+      "image": "images/elaicheesecake.png",
+      "category": "Reading",
+      "label": "",
+      "url": "http://www.myenglishpages.com/site_php_files/reading.php",
+      "description": "Practice your English. Reading comprehension texts with exercises. Learn English through reading." 
+    },
+    {
+      "id": 4,
+      "name": "English Vocabulary Exercises, printable esl Vocabulary worksheets",
+      "image": "images/elaicheesecake.png",
+      "category": "Vocabulary",
+      "label": "",
+      "url": "http://www.esltower.com/vocabularyteachers.html",
+      "description": "Many free ESL, English vocabulary exercises, for English teachers, English ... This page contains printable vocabulary worksheets and exercises for use in the ..." 
+    },
+        {
+      "id": 5,
+      "name": "English Listening Exercises - Online Lessons for ESL Students",
+      "image": "images/elaicheesecake.png",
+      "category": "Listening",
+      "label": "",
+      "url": "http://www.esolcourses.com/content/topicsmenu/listening.html",
+      "description": "Practise your English listening skills and learn about world history, current events and different cultures at the same time. Browse a wide range of free English ..." 
+    },
+
+       {
+      "id": 6,
+      "name": "Writing and English as a Second Language - Learn NC",
+      "image": "images/elaicheesecake.png",
+      "category": "Writing",
+      "label": "",
+      "url": "http://www.learnnc.org/lp/pages/672",
+      "description": "Strategies for helping English Language Learners throughout the writing process. ... works as a half-time ESL resource teacher/half-time second grade language ..." 
+    }
+
+
+    ]

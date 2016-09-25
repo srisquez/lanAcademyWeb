@@ -1,0 +1,60 @@
+<div class="container">
+
+ <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#">Home</a></li>
+                   <li class="active">Lesson Management - Request Lesson</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Review Lessons</h3>
+               <hr>
+            </div>
+ </div>
+
+ <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h3>Lessons Schedule</h3>
+                <div class="table-responsive">
+                <table class="table table-striped">
+                  <tr>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Type of Lesson
+                        </th>
+                        <th>
+                            Lesson Start Time
+                        </th>
+                        <th>
+                            Student
+                        </th>
+                    </tr>
+                    <tr ng-repeat="lesson in lessons"    >
+
+                        <td>
+                            {{lesson.date  | date: 'MM-dd-yyyy'}}
+                        </td>
+                        <td>
+                             {{getLessonDes(lesson.lessonType);}}
+                        </td>
+                        <td>
+                             {{lesson.startHour}} 
+                        </td>
+                        <td>
+                             {{lesson.RequestedBy.firstname + ' ' + lesson.RequestedBy.lastname}}
+                        </td>
+                    </tr>
+
+                </table>
+                </div>
+            </div>
+         </div>
+
+
+
+
+ </div>
+

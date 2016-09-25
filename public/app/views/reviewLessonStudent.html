@@ -1,0 +1,164 @@
+<div class="container">
+
+ <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#">Home</a></li>
+                   <li class="active">Lesson Management - Review Lesson</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Review Lessons</h3>
+               <hr>
+            </div>
+ </div>
+
+  <!--<div class="row row-content">
+
+
+      <div class="col-xs-12 col-sm-9">
+                   <h4>Lessons Schedule &nbsp;&nbsp;&nbsp;
+                       <small>Sort by: &nbsp; 
+                            <input type="text" ng-model="orderText"></p>   
+                       </small></h4>
+                       <div><p style="padding:15px;"></p></div>
+                    <ul class="list-unstyled">
+                        <li ng-repeat="lesson in lessons | orderBy:orderText">
+                            <div>
+
+                               <div >
+                                <label for="date" class="col-sm-3 control-label">Date</label>
+                                <div class="col-sm-9">
+                                <input type="date"  id="date" name="date"
+                               value="{{lesson.date  | date: 'MM-dd-yyyy'}}" readonly  disabled>
+                                </div>
+                             </div>
+                               <div><p style="padding:10px;"></p></div>
+                              <div >
+                                <label for="lessonType" class="col-sm-3 control-label">Type of Lesson</label>
+                                <div class="col-sm-9">
+                                <input type="text"  id="lessonType" name="lessonType"
+                              ng-model="lesson.lessonType" readonly  disabled>
+                                </div>
+                             </div>
+                               <div><p style="padding:10px;"></p></div>
+                              <div >
+                                <label for="startHour" class="col-sm-3 control-label">Lesson Start Time</label>
+                                <div class="col-sm-9">
+                                <input type="text"  id="startHour" name="startHour"
+                              ng-model="lesson.startHour" readonly  disabled>
+                                </div>
+                             </div>
+                               <div><p style="padding:10px;"></p></div>
+                              <div >
+                                <label for="teacher" class="col-sm-3 control-label">Teacher</label>
+                                <div class="col-sm-9">
+                                <input type="text"  id="teacher" name="teacher"
+                              ng-model="TeacherName" readonly  disabled>
+                                </div>
+                             </div>
+                               <div><p style="padding:25px;"></p></div>
+
+
+                            <p>{{lesson.lessonType}}  {{lesson.startHour}}  {{lesson.date}} </p>
+                            
+                          </div>    
+                        
+                        </li>
+                    </ul>
+            </div>
+
+
+  </div>-->
+
+    <!-- <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h3>Lessons Schedule</h3>
+                <div class="table-responsive">
+                <table class="table table-striped">
+                  <tr>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Type of Lesson
+                        </th>
+                        <th>
+                            Lesson Start Time
+                        </th>
+                        <th>
+                            Teacher
+                        </th>
+                    </tr>
+                    <tr ng-repeat="lesson in lessons"    >
+
+                        <td>
+                            {{lesson.date  | date: 'MM-dd-yyyy'}}
+                        </td>
+                        <td>
+                             {{getLessonDes(lesson.lessonType);}}
+                        </td>
+                        <td>
+                             {{lesson.startHour}} 
+                        </td>
+                        <td>
+                             {{TeacherName}}
+                        </td>
+                    </tr>
+
+                </table>
+                </div>
+            </div>
+         </div> -->
+
+
+ <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h3>Lessons Schedule</h3>
+                <div>
+                <P>You could remove or edit any lesson when you select the lesson</P>
+                </div>
+                <div><p style="padding:5px;"></p></div>
+                 <button style="background-color:#00ac8c;font-weight: bold" ng-disabled="!showDeleteEdit" ng-click="removeLesson()" class="btn btn-xs" type="button" >
+                    {{'Remove Lesson'}}
+                </button>
+                <button style="background-color:#00ac8c;font-weight: bold" ng-disabled="!showDeleteEdit"  class="btn btn-xs"
+                    type="button" ui-sref="app.reviewStu.editLes">
+                     {{'Edit Lesson'}}
+                </button>
+              <div><p style="padding:10px;"></p></div>
+                <div class="table-responsive">
+                <table class="table ">
+    
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Type of Lesson</th>
+      <th>
+                            Lesson Start Time
+                        </th>
+                        <th>
+                            Teacher
+                        </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="lesson in lessons" ng-click="selectRow($index)" ng-class="{'highlight': $index == selectedRow  }" >
+      <td> {{lesson.date | date: 'yyyy-MM-dd'}}</td>
+      <td> {{getLessonDes(lesson.lessonType);}}</td>
+      <td>
+                             {{lesson.startHour}} 
+                        </td>
+                        <td>
+                             {{lesson.teacher.firstname + ' ' + lesson.teacher.lastname}}
+                        </td>
+    </tr>
+  </tbody>
+</table>
+   </div>
+            </div>
+   </div>
+
+
+
+ </div>

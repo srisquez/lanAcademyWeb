@@ -1,0 +1,113 @@
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="app"><img src="images/logo_academy.png" height=35 width=35></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active: stateis('app')}"><a ui-sref="app">
+                        <span class="glyphicon glyphicon-home"
+                         aria-hidden="true"></span> Home</a></li>
+                    <li ng-class="{active: stateis('app.aboutus')}"><a ui-sref="app.aboutus">
+                        <span class="glyphicon glyphicon-info-sign"
+                         aria-hidden="true"></span> About Us</a></li>
+                    <li ng-class="{active: stateis('app.programs')}"><a ui-sref="app.programs">
+                         <span class="glyphicon glyphicon-list-alt"
+                         aria-hidden="true"></span> 
+                         Programs</a></li>
+                     <li ng-class="{active: stateis('app.resources')}"><a ui-sref="app.resources">
+                     <i class="glyphicon glyphicon-book"></i> Resources</a></li>
+                     <li ng-class="{active: stateis('app.contactus')}"><a ui-sref="app.contactus">
+                     <i class="fa fa-envelope-o"></i> Contact Us</a></li>
+
+
+                    <li ng-if="profile == 'Teacher' ||  profile == 'Student'" ng-class="{active: stateis('app.profile')}"><a ui-sref="app.profile">
+                     <i class="glyphicon glyphicon-user"></i> Profile</a></li>
+                    
+                      <li ng-if="profile == 'Student'"  class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown"
+                         role="button" aria-haspopup="true" aria-expanded="false"> 
+                         <span class="glyphicon glyphicon-globe"
+                         aria-hidden="true"></span>
+                         Lesson Management<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{active: stateis('app.request')}"><a ui-sref="app.request">Request Lesson</a></li>
+                            <li ng-class="{active: stateis('app.reviewStu')}"><a ui-sref="app.reviewStu">Review Lessons</a></li>
+                        </ul>
+                    </li>
+
+                      <li ng-if="profile == 'Teacher'"  class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown"
+                         role="button" aria-haspopup="true" aria-expanded="false"> 
+                         <span class="glyphicon glyphicon-globe"
+                         aria-hidden="true"></span>
+                         Lesson Management<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{active: stateis('app.reviewTe')}"><a ui-sref="app.reviewTe">Review Lessons</a></li>
+                        </ul>
+                    </li>
+
+
+                      <li ng-if="profile == 'Teacher'" ng-class="{active: stateis('app.feedback')}"><a ui-sref="app.feedback">
+                     <i class="glyphicon glyphicon-inbox"></i>Feedback</a></li>
+
+
+                      <li ng-if="profile == 'Student'" ng-class="{active: stateis('app.reviewFeedback')}"><a ui-sref="app.reviewFeedback">
+                     <i class="glyphicon glyphicon-inbox"></i>Feedback</a></li>
+
+
+                     <li  ng-if="profile == 'Admin'"  class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown"
+                         role="button" aria-haspopup="true" aria-expanded="false"> 
+                         <span class="glyphicon glyphicon-user"
+                         aria-hidden="true"></span>
+                         User Management<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{active: stateis('app.userManage')}"><a ui-sref="app.userManage">Register User</a></li>
+                            <li ng-class="{active: stateis('app.getAllUsers')}"><a ui-sref="app.getAllUsers">All Users</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-if="!loggedIn"><a ng-click="openLogin()">
+                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                    <li ng-if="loggedIn">
+                    <a>{{username}}</a>
+                    </li>
+                    <li ng-if="loggedIn">
+                    <a ng-click="logOut()">
+                    <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>         
+               
+    <header class="jumbotron">
+
+        <!-- Main component for a primary marketing message or call to action -->
+
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-xs-12 col-sm-8">
+                    <h1>Language Academy</h1>
+                    <p style="padding:40px;"></p>
+                    <p>Language Academy is dedicated to providing quality English language lessons and American culture resources to the non-native English speaking community. Helping students succeed since 2014!</p>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                <p style="padding:20px;"></p>
+                <img src="images/logo_academy.png" class="img-responsive">
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                </div>
+            </div>
+        </div>
+    </header>
