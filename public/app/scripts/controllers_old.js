@@ -197,7 +197,7 @@ $scope.teachers = getTeachersProfile.query();
 
 .controller('ReviewLessonStuController', ['$scope', 'reviewLessonFactory','reviewLessonFactory_Stu','$rootScope', function ($scope, reviewLessonFactory,reviewLessonFactory_Stu,$rootScope) {
 
-$scope.lessons = reviewLessonFactory.query({id: $rootScope.userId});
+$scope.lessons = reviewLessonFactory.query();
 
 
 
@@ -221,7 +221,7 @@ $scope.removeLesson = function() {
 
         reviewLessonFactory_Stu.delete({id: $scope.lessons[$scope.selectedRow]._id});
 
-        $scope.lessons = reviewLessonFactory.query({id: $rootScope.userId});
+        $scope.lessons = reviewLessonFactory.query();
 
     };
 
@@ -267,7 +267,7 @@ $scope.removeLesson = function() {
 
 .controller('ReviewLessonTeController', ['$scope', 'reviewLessonTeFactory','$rootScope', function ($scope, reviewLessonTeFactory,$rootScope) {
 
-$scope.lessons = reviewLessonTeFactory.query({id: $rootScope.userId});
+$scope.lessons = reviewLessonTeFactory.query();
 
 
 
@@ -605,11 +605,9 @@ $scope.tel = {
 }])
 
 
-.controller('ProfileController', ['$scope', 'profileFactory','ngDialog','$rootScope', function ($scope, profileFactory,ngDialog,$rootScope) {
+.controller('ProfileController', ['$scope', 'profileFactory','ngDialog', function ($scope, profileFactory,ngDialog) {
 
-    console.log($rootScope.userId);
-
-    $scope.userProfile = profileFactory.query({id: $rootScope.userId});
+    $scope.userProfile = profileFactory.query();
 
  
 
@@ -706,7 +704,7 @@ $scope.tel = {
     };
 }])
 
-.controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory','$http', '$cacheFactory','Cache', function ($scope, $state, $rootScope, ngDialog, AuthFactory,$http, $cacheFactory,Cache) {
+.controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory', function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
 
     $scope.loggedIn = false;
     $scope.username = '';
@@ -717,7 +715,7 @@ $scope.tel = {
         $scope.loggedIn = true;
         $scope.username = AuthFactory.getUsername();
          $scope.profile = AuthFactory.getProfile();
-          //$rootScope.userId = AuthFactory.getuserId();
+          $rootScope.userId = AuthFactory.getuserId();
     }
         
     $scope.openLogin = function () {
@@ -730,16 +728,13 @@ $scope.tel = {
         $scope.username = '';
         $scope.profile = '';
         $rootScope.userId = '';
-        Cache.invalidate('/users');
-
-         $state.go('app');
     };
     
     $rootScope.$on('login:Successful', function () {
         $scope.loggedIn = AuthFactory.isAuthenticated();
         $scope.username = AuthFactory.getUsername();
         $scope.profile = AuthFactory.getProfile();
-        // $rootScope.userId = AuthFactory.getuserId();
+         $rootScope.userId = AuthFactory.getuserId();
     });
         
     $rootScope.$on('registration:Successful', function () {
@@ -819,7 +814,7 @@ $scope.tel = {
 
            //AuthFactory.reset($scope.register);
 
-           AuthFactory.validateUserPwdandReset($scope.loginData,$scope.Newpassword);
+           AuthFactory.validateUserPwdandReset($scope.loginData);
         
            ngDialog.close();
          

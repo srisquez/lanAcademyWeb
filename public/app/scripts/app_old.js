@@ -37,7 +37,6 @@ angular.module('confusionApp', ['ui.router','ngResource','ngDialog'])
              // route for the profile page
             .state('app.profile', {
                 url:'profile',
-                 cache:false,
                 views: {
                     'content@': {
                         templateUrl : 'views/profile.html' ,

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('confusionApp')
-.constant("baseURL", "https://localhost:3443/")
+//.constant("baseURL", "https://localhost:3443/")
+.constant("baseURL", "https://language-website-90611.onmodulus.net/")
 .factory('menuFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
         return $resource(baseURL + "dishes/:id", null, {
@@ -91,7 +92,7 @@ angular.module('confusionApp')
 .factory('reviewLessonFactory', ['$resource', 'baseURL','$rootScope', function ($resource, baseURL,$rootScope) {
 
 
-    return $resource(baseURL + "lesson/getLessonsByUser/:id", {id:"@Id"} , null, {
+    return $resource(baseURL + "lesson/getLessonsByUser/"  + ($rootScope.userId != null? $rootScope.userId : "") , null, {
             'query':  {method:'GET', isArray: true}
         });
 
@@ -115,28 +116,19 @@ angular.module('confusionApp')
 .factory('reviewLessonTeFactory', ['$resource', 'baseURL','$rootScope', function ($resource, baseURL,$rootScope) {
 
 
-    return $resource(baseURL + "lesson/getLessonsByTeacher/:id", {id:"@Id"}, {
+    return $resource(baseURL + "lesson/getLessonsByTeacher/"  + ($rootScope.userId != null? $rootScope.userId : "") , null, {
             'query':  {method:'GET', isArray: true}
         });
 }])
 
 
-.factory('profileFactory', ['$resource', 'baseURL','$rootScope','AuthFactory', function ($resource, baseURL,$rootScope,AuthFactory) {
+.factory('profileFactory', ['$resource', 'baseURL','$rootScope', function ($resource, baseURL,$rootScope) {
 
-    return $resource(baseURL + "users/getUser/:id", {id:"@Id"}, {
-            'query':  {method:'GET' , isArray: false}
+
+    return $resource(baseURL + "users/getUser/" + ($rootScope.userId != null? $rootScope.userId : ""), null, {
+            'query':  {method:'GET', isArray: false}
         });
 
-}])
-
-.factory('Cache', ['$cacheFactory',function ($cacheFactory) {
-    var $httpDefaultCache = $cacheFactory.get('$http');
- 
-    return {
-        invalidate: function (key) {
-            $httpDefaultCache.remove(key);
-        }
-    }
 }])
 
 
@@ -239,8 +231,6 @@ angular.module('confusionApp')
     var profile = '';
     var userId = '';
     var loginOK = false;
-
-
     
 
   function loadUserCredentials() {
@@ -257,12 +247,10 @@ angular.module('confusionApp')
  
   function useCredentials(credentials) {
     isAuthenticated = true;
-    $rootScope.userId = credentials.userId;
     username = credentials.username;
     authToken = credentials.token;
      profile = credentials.profile;
      userId = credentials.userId;
-
  
     // Set the token as header for your requests!
     $http.defaults.headers.common['x-access-token'] = authToken;
@@ -273,7 +261,6 @@ angular.module('confusionApp')
     username = '';
     profile = '';
     userId = '';
-    $rootScope.userId = '';
     isAuthenticated = false;
     $http.defaults.headers.common['x-access-token'] = authToken;
     $localStorage.remove(TOKEN_KEY);
@@ -316,8 +303,6 @@ angular.module('confusionApp')
     }
      
     authFac.login = function(loginData) {
-
-       $rootScope.userId = '';
         
         $resource(baseURL + "users/login")
         .save(loginData,
@@ -347,7 +332,7 @@ angular.module('confusionApp')
     };
 
 
-        authFac.validateUserPwdandReset = function(loginData,newpassword) {
+        authFac.validateUserPwdandReset = function(loginData) {
 
    var register={
 
@@ -358,7 +343,7 @@ angular.module('confusionApp')
         .save(loginData,
            function(response) {
 
-             register.newpassword = newpassword;
+             register.newpassword = loginData.password;
 
             authFac.reset(register);
               loginOK = true;
